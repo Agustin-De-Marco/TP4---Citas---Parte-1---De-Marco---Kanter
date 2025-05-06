@@ -1,18 +1,15 @@
 import Cita from './Cita'
 import '../styles/CitasList.css'
 
-function CitasList({ citas }) {
+function CitasList({ citas, eliminarCita }) {
   return (
     <>
-      <h2>Administra tus citas</h2>
-      {citas.map((cita, index) => (
+      <h2>{citas.length ? 'Administra tus citas' : 'No hay citas'}</h2>
+      {citas.map(cita => (
         <Cita 
-          key={index}
-          mascota={cita.mascota}
-          propietario={cita.propietario}
-          fecha={cita.fecha}
-          hora={cita.hora}
-          sintomas={cita.sintomas}
+          key={cita.id}
+          cita={cita}
+          eliminarCita={eliminarCita}
         />
       ))}
     </>
